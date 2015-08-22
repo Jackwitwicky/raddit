@@ -21,6 +21,13 @@ module SessionsHelper
     end
   end
 
+
+  def log_in_required
+    unless logged_in?
+      redirect_to login_path
+    end
+    end
+
   def log_out
     session.delete(:user_id)
   end

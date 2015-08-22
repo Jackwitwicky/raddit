@@ -1,4 +1,7 @@
 class LinksController < ApplicationController
+
+  before_filter :log_in_required, :except => [:index, :show]
+
   def index
     @link = Link.all
   end
@@ -8,7 +11,7 @@ class LinksController < ApplicationController
   end
 
   def new
-    @link = Link.new
+    @link = current_user.links.build
   end
 
   def edit
@@ -16,7 +19,7 @@ class LinksController < ApplicationController
   end
 
   def create
-    @link = Link.new(link_params)
+    @link = current_user.links.create(link_params)
 
     if @link.save
       flash[:success] = "Your link has been saved successfully."
