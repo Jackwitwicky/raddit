@@ -1,0 +1,28 @@
+<h1>Add a new Link</h1>
+
+<% if @link.errors.any? %>
+    <h2><%= pluralize(@link.errors.count, "error")%> found.</h2>
+    <ul>
+      <% @link.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+
+<% end %>
+
+<%= form_for(@link) do |f| %>
+    <p>
+      <%= f.label :title %><br>
+      <%= f.text_field :title %>
+    </p>
+
+    <p>
+      <%= f.label :url %>
+      <%= f.text_field :url %>
+    </p>
+
+    <p>
+      <%= f.submit %>
+    </p>
+
+<% end %>

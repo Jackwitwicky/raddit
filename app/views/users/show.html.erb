@@ -1,0 +1,21 @@
+<h1>Your personal corner in the Raddit sphere.</h1>
+
+<p>
+  <%= @user.name %>
+</p>
+
+<p>
+  <%= @user.email %>
+</p>
+
+<p>
+  <%= link_to 'Create a Post', new_link_path %>
+</p>
+
+<p>
+  <%= link_to 'Edit profile', edit_user_path(@user) %>
+</p>
+<p>
+  <%= link_to 'Take Me Home', root_path %>
+</p>
+
