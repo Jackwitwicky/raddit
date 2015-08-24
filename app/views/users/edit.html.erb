@@ -1,27 +1,49 @@
-<h1>Edit your Settings</h1>
+<div class="page-header">
+  <div class="pull-right">
+    <%= link_to "Back", root_path, class: "btn btn-warning" %>
+  </div>
+  <h3>Account Management</h3>
+</div>
 
-<%= form_for(@user) do |f| %>
-    <p>
-      <%= f.label :name %><br>
-      <%= f.text_field :name %>
-    </p>
+<div class="panel panel-default">
+    <div class="panel-body">
+      <%= form_for(@user) do |f| %>
+          <div class="form-group">
+            <%= f.label :name %><br>
+            <%= f.text_field :name, class: "form-control" %>
+          </div>
 
-    <p>
-      <%= f.label :email %><br>
-      <%= f.email_field :email %>
-    </p>
-    
-    <p>
-      <%= f.label :password %><br>
-      <%= f.password_field :password %>
-    </p>
+          <div class="form-group">
+            <%= f.label :email %><br>
+            <%= f.email_field :email, class: "form-control" %>
+          </div>
 
-    <p>
-      <%= f.label :password_confirmation %><br>
-      <%= f.password_field :password_confirmation %>
-    </p>
+          <div class="form-group">
+            <%= f.label :password %><br>
+            <%= f.password_field :password, class: "form-control" %>
+          </div>
 
-    <p>
-      <%= f.submit %>
-    </p>
-<% end %>
+          <div class="form-group">
+            <%= f.label :password_confirmation %><br>
+            <%= f.password_field :password_confirmation, class: "form-control" %>
+          </div>
+
+          <div class="form-group">
+            <%= f.submit "Save Settings", class: "btn btn-primary" %>
+          </div>
+      <% end %>
+    </div>
+
+    <div class="panel-footer">
+      <h3>Cancel My Account</h3>
+
+      <p>
+        <strong class="text-danger">Warning</strong> This action
+        cannot be reverted
+      </p>
+      <p>
+        <%= button_to "Delete Account", user_path(@user), data: {confirm: "Are you sure?"},
+                      method: :delete, class: "btn btn-danger" %>
+      </p>
+    </div>
+</div>

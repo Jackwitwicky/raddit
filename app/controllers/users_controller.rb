@@ -15,6 +15,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
+      log_in(@user)
       flash[:success] = "Welcome to Raddit!"
       redirect_to @user
     else
@@ -28,6 +29,14 @@ class UsersController < ApplicationController
 
     flash[:success] = "Your settings were updated successfully."
     redirect_to @user
+  end
+
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+
+    flash[:success] = "Your account was successfully deleted"
+    redirect_to root_path
   end
 
   private

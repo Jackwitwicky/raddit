@@ -1,33 +1,26 @@
-<h1>Welcome to Raddit.</h1>
+<div class="page-header">
+  <h1>Welcome to Raddit.</h1>
+</div>
 
-<h2>While you were away...</h2>
+<div class="container">
+  <div class="row">
+    <h2 class="col-md-push-1 col-md-4">While you were away...</h2>
+  </div>
+</div>
 
 <%= link_to 'Post a link', new_link_path %>
 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Url</th>
-  </tr>
-  <% @link.each do |link| %>
-      <tr>
-        <td>
-          <%= link.title %>
-        </td>
-        <td>
-          <%= link.url %>
-        </td>
-        <td>
-          <%= link_to 'Show', link %>
-        </td>
-        <% if link.user == current_user %>
-            <td>
-              <%= link_to "Edit", edit_link_path(link) %>
-            </td>
-            <td>
-              <%= link_to "Delete", link_path(link), method: :delete %>
-            </td>
-        <% end %>
-      </tr>
-  <% end %>
-</table>
+<% @link.each do |link| %>
+    <p>
+    <div class="title">
+      <%= link_to link.title, link %>
+    </div>
+    </p>
+
+    <p>
+      Submitted <%= time_ago_in_words(link.created_at) %> by <%= link.user.name %>
+    </p>
+
+    <hr class="featurette-divider">
+
+<% end %>

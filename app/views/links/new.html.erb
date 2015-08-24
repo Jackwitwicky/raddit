@@ -10,19 +10,21 @@
 
 <% end %>
 
-<%= form_for(@link) do |f| %>
-    <p>
-      <%= f.label :title %><br>
-      <%= f.text_field :title %>
-    </p>
+<div class="container">
+  <%= form_for(@link) do |f| %>
+      <div class="form-group">
+        <%= f.label :title %><br>
+        <%= f.text_field :title, class: "form-control" %>
+      </div>
 
-    <p>
-      <%= f.label :url %>
-      <%= f.text_field :url %>
-    </p>
+      <div class="form-group">
+        <%= f.label :url %>
+        <%= f.text_field :url, class: "form-control" %>
+      </div>
 
-    <p>
-      <%= f.submit %>
-    </p>
+      <div class="form-group">
+        <%= f.submit "Submit", class: "btn btn-success" %>
+      </div>
 
-<% end %>
+  <% end %>
+</div>
