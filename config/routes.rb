@@ -11,6 +11,12 @@ Rails.application.routes.draw do
   post 'login' => "sessions#create"
   delete 'logout' => "sessions#destroy"
 
+  get 'like' => "votes#up_vote"
+  post 'like' => "votes#up_vote"
+
+  get 'dislike' => "votes#down_vote"
+  post 'dislike' => "votes#down_vote"
+
   resources :links
   resources :users
 

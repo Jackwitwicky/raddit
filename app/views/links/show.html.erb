@@ -9,10 +9,27 @@
   Submitted by <%= link_to @link.user.name, @link.user %>
 </p>
 
+<p>
+  Likes: <%= @link.votes.where(like: "1").count %>
+  Dislikes: <%= @link.votes.where(dislike: "1").count %>
+  <div class="pull-right">
+    <%= link_to like_path(@link), class: "btn btn-default btn-sm" do%>
+        <span class="glyphicon glyphicon-chevron-up"></span>
+        Like
+        <span class="badge"><%= @link.votes.where(like: "1").count %></span>
+    <% end %>
+    <%= link_to dislike_path(@link), class: "btn btn-default btn-sm" do %>
+        <span class="glyphicon glyphicon-chevron-down"></span>
+        Dislike
+        <span class="badge"><%= @link.votes.where(dislike: "1").count %></span>
+    <% end %>
+  </div>
+</p>
+
 <div class="show-buttons">
   <p>
     <%= link_to "Visit Url", @link.url, class: "btn btn-primary" %>
-    <% if @link.user = current_user %>
+    <% if @link.user == current_user %>
         <%= link_to "Edit", edit_link_path(@link), class: "btn btn-default" %>
         <%= link_to "Delete", link_path(@link), method: :delete, class: "btn btn-default" %>
     <% end %>
