@@ -10,8 +10,6 @@
 </p>
 
 <p>
-  Likes: <%= @link.votes.where(like: "1").count %>
-  Dislikes: <%= @link.votes.where(dislike: "1").count %>
   <div class="pull-right">
     <%= link_to like_path(@link), class: "btn btn-default btn-sm" do%>
         <span class="glyphicon glyphicon-chevron-up"></span>
@@ -35,6 +33,34 @@
     <% end %>
   </p>
 </div>
+
+<p>
+<div class="comment-count">
+  <%= pluralize(@link.comments.count, "comment") %>
+</div>
+</p>
+
+<%= render @link.comments %>
+
+<div class="comment-header">
+  Add comment
+</div>
+<% if logged_in? %>
+    <%= form_for([@link, @link.comments.build]) do |f| %>
+        <div class="form-group">
+          <%= f.label :body %>
+          <%= f.text_area :body, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.submit "Comment", class: "btn btn-info" %>
+        </div>
+    <% end %>
+
+<% else %>
+    <div class="alert alert-info">Please login so that you can comment</div>
+<% end %>
+
 <p>
   <%= link_to 'Take me Home', root_path, class: "btn btn-primary" %>
 </p>

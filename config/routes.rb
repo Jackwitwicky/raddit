@@ -17,7 +17,9 @@ Rails.application.routes.draw do
   get 'dislike' => "votes#down_vote"
   post 'dislike' => "votes#down_vote"
 
-  resources :links
+  resources :links do
+    resources :comments
+  end
   resources :users
 
   # Example of regular route:

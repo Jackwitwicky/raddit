@@ -8,13 +8,15 @@
   <%= @user.email %>
 </p>
 
-<p>
-  <%= link_to 'Create a Post', new_link_path %>
-</p>
+<% if current_user.id == @user.id %>
+    <p>
+      <%= link_to 'Create a Post', new_link_path %>
+    </p>
 
-<p>
-  <%= link_to 'Edit profile', edit_user_path(@user) %>
-</p>
+    <p>
+      <%= link_to 'Edit profile', edit_user_path(@user) %>
+    </p>
+<% end %>
 <p>
   <%= link_to 'Take Me Home', root_path %>
 </p>

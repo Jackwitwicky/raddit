@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
 
   has_many :links, dependent: :destroy
   has_many :votes
-
+  has_many :comments
   validates :name, presence: true,
             length: {maximum: 50}
 
