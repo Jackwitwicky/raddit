@@ -1,7 +1,6 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a reddit-like web app. Allowing a user to post a comment and also allow others to comment and like it.
 
 Things you may want to cover:
 
